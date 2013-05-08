@@ -1,0 +1,8 @@
+<div class="profile-image">
+  <img src="<%= bigger_profile_image_url %>" />
+</div>
+<div class="content">
+  <p class="author">@<%= from_user %></p>
+  <q class="text"><%= text %></q>
+  <p class="timestamp" title="<%= created_at %>"></p>
+</div>

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= pkg.name %></title>
+
+    <link rel="stylesheet" type="text/css" href="<%= css %>" media="all" />
+  </head>
+  <body>
+    <div id="slides">
+      <div id="canvas">
+        <div class="step announcement center" data-x="0" data-y="-900">
+          <img src='img/cwtd-logo.jpg' />
+        </div>
+
+        <div class="step announcement center red-hawk" data-x="0" data-y="-100">
+          <img src='img/logo-w-tag.jpg' />
+          <p><strong>Red Hawk Technologies</strong> is a .NET focused development company providing
+            clients with interactive application development &amp; systems integration
+            services. With over fifteen years of application development expertise,
+            the professionals at Red Hawk Technologies produce sophisticated web and
+            mobile applications that integrate with client and third party data
+            sources. Red Hawk bridges the gap between Marketing and IT teams to help
+            businesses realize their vision.</p>
+        </div>
+
+        <div class="step announcement center" data-x="0" data-y="800">
+          <img src='img/gpk.png' />
+          <h1>Roadtrippers is hiring!</h1>
+          <p>Roadtrippers is a simple and intuitive road trip planner that helps you
+            discover, plan and book the best places and experiences along your way,
+            curated by local experts and travel writers. Important note: Roadrippers
+            is HIRING. If you're interested, the team will be around to
+            answer questions at the Drinkup!</p>
+        </div>
+      </div>
+    </div>
+
+    <script type="text/javascript" src="<%= js %>"></script>
+    <script type="text/javascript">
+      $(function(){
+        ImpressiveTwitter.init()
+      })
+    </script>
+  </body>
+</html>
