@@ -21,15 +21,11 @@ ImpressiveTwitter.Views.SlidesView = Backbone.View.extend
     transformStyle: "preserve-3d"
 
   initialize: ->
-    @createCanvas()
+    @$canvas = @$('#canvas')
     @slideViews = []
     @cssHelper = new ImpressiveTwitter.Helpers.CssHelper
     @listenTo @collection, 'add', @appendTweet
     @listenTo @collection, 'reset', @renderTweets
-
-  createCanvas: ->
-    @$canvas = @$('#canvas')
-    @$canvas
 
   render: ->
     @$canvas.applyStyles(@defaultStyles)
