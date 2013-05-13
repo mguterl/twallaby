@@ -27,7 +27,6 @@ ImpressiveTwitter.Views.SlidesView = Backbone.View.extend
     @collection.on 'sync', @appendTweets, @
 
   createCanvas: ->
-    @$el.append("<div id='canvas'/>") unless @$('#canvas').length
     @$canvas = @$('#canvas')
     @$canvas
 
@@ -58,7 +57,6 @@ ImpressiveTwitter.Views.SlidesView = Backbone.View.extend
 
   step: ->
     @goToSlide(@randomTweetIndex())
-    @_stepCount = @_stepCount + 1
 
   goToSlide: (index) ->
     @$el.applyStyles

@@ -1,7 +1,7 @@
 describe "SlidesView", ->
   beforeEach ->
     @tweets = new ImpressiveTwitter.Collections.Tweets(FIXTURES.tweets)
-    @slidesView = new ImpressiveTwitter.Views.SlidesView(collection: @tweets)
+    @slidesView = new ImpressiveTwitter.Views.SlidesView(el: "<div><div id='canvas'></div></div>", collection: @tweets)
 
   describe "appendTweets", ->
     beforeEach ->
@@ -12,12 +12,6 @@ describe "SlidesView", ->
   describe "coordinatesFor", ->
     it "returns sweet coordinates", ->
       expect(@slidesView.coordinatesFor(1)).to.have.keys(['translate'])
-
-  describe "step", ->
-    describe "1", ->
-      it "increments _stepCount", ->
-        @slidesView.step()
-        expect(@slidesView._stepCount).to.equal 1
 
   describe "randomIntegerBetween", ->
     it "gemerates a random number", ->
