@@ -21,12 +21,3 @@ describe "CssHelper", ->
   describe "perspective", ->
     it "returns a perspective string", ->
       expect(@cssHelper.perspective(2)).to.equal "perspective(2px)"
-
-  describe "applyStylesTo", ->
-    it "applies normal styles to an element", ->
-      @cssHelper.applyStyles(@elm, top: '100%')
-      expect(@elm.style['top']).to.equal '100%'
-
-    it "applies vendor-prefixed styles if the style is not supported", ->
-      @cssHelper.applyStyles(@elm, transform: 'perspective(1)')
-      expect(@elm.style['-webkit-transform']).to.equal 'perspective(1)'

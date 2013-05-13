@@ -31,18 +31,17 @@ ImpressiveTwitter.Views.SlidesView = Backbone.View.extend
     @$canvas
 
   render: ->
-    @cssHelper.applyStyles(@$canvas, @defaultStyles)
-    @cssHelper.applyStyles(@$el, @defaultStyles)
-    @cssHelper.applyStyles @$el, {
+    @$canvas.applyStyles(@defaultStyles)
+    @$el.applyStyles(@defaultStyles)
+    @$el.applyStyles
       top: "50%"
       left: "50%"
       transform: "#{@cssHelper.perspective(1000)} #{@cssHelper.scale( 1 )}"
-    }
     @
 
   appendTweets: ->
     for model, i in @collection.models
-      tweetView = new ImpressiveTwitter.Views.TweetView(model: model, coordinates: @coordinatesFor)
+      tweetView = new ImpressiveTwitter.Views.TweetView(model: model, coordinates: @coordinatesFor(i))
       @$canvas.append(tweetView.render().el)
 
   coordinatesFor: (index) ->

@@ -14,6 +14,6 @@ ImpressiveTwitter.Views.TweetView = Backbone.View.extend
   render: ->
     @$el.html(@template(@model.toJSON()))
     @$('.timestamp').timeago()
-    @cssHelper.applyStyles(@el, @defaultStyles)
-    @cssHelper.applyStyles(@el, transform: "translate(-50%,-50%) #{@cssHelper.translate(@coordinates.translate)}")
+    @$el.applyStyles(@defaultStyles)
+    @$el.applyStyles(transform: "translate(-50%,-50%) #{@cssHelper.translate(@coordinates.translate)}")
     @

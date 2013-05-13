@@ -11,7 +11,3 @@ class ImpressiveTwitter.Helpers.CssHelper
   perspective: (p) ->
     "perspective(#{p}px)"
 
-  applyStyles: (element, styles) ->
-    element = if element instanceof $ then element[0] else element
-    for key, value of styles
-      element.style[Modernizr.prefixed(key)] = value
