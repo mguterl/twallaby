@@ -65,7 +65,6 @@ ImpressiveTwitter.Views.SlidesView = Backbone.View.extend
 
   goToSlide: (index) ->
     return if @_paused
-    # @impress.goto(index)
 
   randomSlideIndex: ->
     @randomIntegerBetween(@$('.step').first().index(), @$('.step').last().index())
