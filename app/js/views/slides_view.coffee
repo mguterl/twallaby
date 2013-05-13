@@ -24,7 +24,8 @@ ImpressiveTwitter.Views.SlidesView = Backbone.View.extend
     @createCanvas()
     @slideViews = []
     @cssHelper = new ImpressiveTwitter.Helpers.CssHelper
-    @collection.on 'sync', @appendTweets, @
+    @listenTo @collection, 'add', @appendTweet
+    @listenTo @collection, 'reset', @renderTweets
 
   createCanvas: ->
     @$canvas = @$('#canvas')
@@ -39,11 +40,17 @@ ImpressiveTwitter.Views.SlidesView = Backbone.View.extend
       transform: "#{@cssHelper.perspective(1000)} #{@cssHelper.scale( 1 )}"
     @
 
-  appendTweets: ->
-    for model, i in @collection.models
-      tweetView = new ImpressiveTwitter.Views.TweetView(model: model, coordinates: @coordinatesFor(i))
+  renderTweets: ->
+    for model in @collection.models
+      tweetView = new ImpressiveTwitter.Views.TweetView(model: model, coordinates: @coordinatesFor(@collection.indexOf(model)))
       @$canvas.append(tweetView.render().el)
       @slideViews.push(tweetView)
+
+  appendTweet: (model, options={}) ->
+    @rearrangeViews()
+    tweetView = new ImpressiveTwitter.Views.TweetView(model: model, coordinates: @coordinatesFor(@collection.indexOf(model)))
+    @$canvas.append(tweetView.render().el)
+    @slideViews.push(tweetView)
 
   coordinatesFor: (index) ->
     radius = 140 * @collection.size()
@@ -54,6 +61,10 @@ ImpressiveTwitter.Views.SlidesView = Backbone.View.extend
         y: Math.floor(radius * Math.sin(index * theta))
         z: 0
     }
+
+  rearrangeViews: ->
+    for view, i in @slideViews
+      view.setCoordinates(@coordinatesFor(i))
 
   step: ->
     @goToSlide(@randomTweetIndex())

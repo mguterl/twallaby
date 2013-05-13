@@ -1,8 +1,8 @@
 <div class="profile-image">
-  <img src="<%= bigger_profile_image_url %>" />
+  <img src="<%= get('bigger_profile_image_url') %>" />
 </div>
 <div class="content">
-  <p class="author">@<%= from_user %></p>
-  <q class="text"><%= text %></q>
-  <p class="timestamp" title="<%= created_at %>"></p>
+  <p class="author">@<%= get('from_user') %></p>
+  <q class="text"><%= get('text') %></q>
+  <p class="timestamp" title="<%= get('created_at') %>"></p>
 </div>
