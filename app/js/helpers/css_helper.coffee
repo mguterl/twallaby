@@ -1,4 +1,4 @@
-class ImpressiveTwitter.Helpers.CssHelper
+ImpressiveTwitter.cssHelper =
   translate: (coords = {}) ->
     "translate3d(#{coords.x || 0}px,#{coords.y || 0}px,#{coords.z || 0}px)"
 

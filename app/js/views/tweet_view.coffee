@@ -8,9 +8,6 @@ ImpressiveTwitter.Views.TweetView = Backbone.View.extend
     transformStyle: "preserve-3d"
     transition: "all 0.5s ease-in-out"
 
-  initialize: (options = {}) ->
-    @cssHelper = new ImpressiveTwitter.Helpers.CssHelper
-
   render: ->
     @$el.html(@template(@model))
     @$('.timestamp').timeago()
@@ -18,4 +15,4 @@ ImpressiveTwitter.Views.TweetView = Backbone.View.extend
     @
 
   position: (coordinates) ->
-    @$el.applyStyles(transform: "translate(-50%,-50%) #{@cssHelper.translate(coordinates)}")
+    @$el.applyStyles(transform: "translate(-50%,-50%) #{ImpressiveTwitter.cssHelper.translate(coordinates)}")

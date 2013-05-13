@@ -1,6 +1,5 @@
 ImpressiveTwitter.Views.SlidesView = Backbone.View.extend
   id: "impress"
-
   template: JST['app/templates/index_view.us']
 
   delay: 4000
@@ -23,7 +22,6 @@ ImpressiveTwitter.Views.SlidesView = Backbone.View.extend
   initialize: ->
     @$canvas = @$('#canvas')
     @slideViews = []
-    @cssHelper = new ImpressiveTwitter.Helpers.CssHelper
     @listenTo @collection, 'add', @appendTweet
     @listenTo @collection, 'reset', @renderTweets
 
@@ -33,7 +31,7 @@ ImpressiveTwitter.Views.SlidesView = Backbone.View.extend
     @$el.applyStyles
       top: "50%"
       left: "50%"
-      transform: "#{@cssHelper.perspective(1000)} #{@cssHelper.scale( 1 )}"
+      transform: "#{ImpressiveTwitter.cssHelper.perspective(1000)} #{ImpressiveTwitter.cssHelper.scale(1)}"
     @
 
   renderTweets: ->
@@ -71,7 +69,7 @@ ImpressiveTwitter.Views.SlidesView = Backbone.View.extend
       transitionDuration: "1000ms"
 
     @$canvas.applyStyles
-      transform: @cssHelper.translate(@slideViews[index].coordinates.translate)
+      transform: ImpressiveTwitter.cssHelper.translate(@slideViews[index].cordinates())
       transitionDuration: "1000ms"
 
   randomSlideIndex: ->
