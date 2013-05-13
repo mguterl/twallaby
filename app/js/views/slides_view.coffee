@@ -22,7 +22,9 @@ ImpressiveTwitter.Views.SlidesView = Backbone.View.extend
   initialize: ->
     @$canvas = @$('#canvas')
     @slideViews = []
-    @listenTo @collection, 'add', @appendTweet
+    @listenTo @collection, 'add', (model) ->
+      @rearrangeViews()
+      @appendTweet(model)
     @listenTo @collection, 'reset', @renderTweets
 
   render: ->
@@ -39,7 +41,6 @@ ImpressiveTwitter.Views.SlidesView = Backbone.View.extend
       @appendTweet(model)
 
   appendTweet: (model) ->
-    @rearrangeViews()
     tweetView = new ImpressiveTwitter.Views.TweetView(model: model)
     @position(tweetView)
     @$canvas.append(tweetView.render().el)
@@ -66,7 +67,7 @@ ImpressiveTwitter.Views.SlidesView = Backbone.View.extend
       transitionDuration: "1000ms"
 
     @$canvas.applyStyles
-      transform: ImpressiveTwitter.cssHelper.translate(@slideViews[index].cordinates())
+      transform: ImpressiveTwitter.cssHelper.translate(@slideViews[index].currentPosition)
       transitionDuration: "1000ms"
 
   randomSlideIndex: ->

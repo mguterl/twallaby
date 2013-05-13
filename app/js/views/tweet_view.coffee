@@ -15,4 +15,5 @@ ImpressiveTwitter.Views.TweetView = Backbone.View.extend
     @
 
   position: (coordinates) ->
-    @$el.applyStyles(transform: "translate(-50%,-50%) #{ImpressiveTwitter.cssHelper.translate(coordinates)}")
+    @currentPosition = coordinates
+    @$el.applyStyles(transform: "translate(-50%, -50%) #{ImpressiveTwitter.cssHelper.translate(coordinates)}")
