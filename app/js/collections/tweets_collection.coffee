@@ -7,6 +7,12 @@ ImpressiveTwitter.Collections.Tweets = Backbone.Collection.extend
     q: "CWTDrinkUp"
     result_type: 'recent'
 
+  startPolling: (interval) ->
+    @interval = setInterval (=> @fetch()), interval || 60000
+
+  stopPolling: ->
+    clearInterval @interval
+
   url: ->
     urlParts = []
     for key, value of @twitterParams
