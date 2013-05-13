@@ -36,12 +36,9 @@ ImpressiveTwitter.Views.SlidesView = Backbone.View.extend
 
   renderTweets: ->
     for model in @collection.models
-      tweetView = new ImpressiveTwitter.Views.TweetView(model: model)
-      @position(tweetView)
-      @$canvas.append(tweetView.render().el)
-      @slideViews.push(tweetView)
+      @appendTweet(model)
 
-  appendTweet: (model, options={}) ->
+  appendTweet: (model) ->
     @rearrangeViews()
     tweetView = new ImpressiveTwitter.Views.TweetView(model: model)
     @position(tweetView)
