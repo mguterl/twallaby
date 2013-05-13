@@ -42,29 +42,30 @@ ImpressiveTwitter.Views.SlidesView = Backbone.View.extend
 
   renderTweets: ->
     for model in @collection.models
-      tweetView = new ImpressiveTwitter.Views.TweetView(model: model, coordinates: @coordinatesFor(@collection.indexOf(model)))
+      tweetView = new ImpressiveTwitter.Views.TweetView(model: model)
+      @position(tweetView)
       @$canvas.append(tweetView.render().el)
       @slideViews.push(tweetView)
 
   appendTweet: (model, options={}) ->
     @rearrangeViews()
-    tweetView = new ImpressiveTwitter.Views.TweetView(model: model, coordinates: @coordinatesFor(@collection.indexOf(model)))
+    tweetView = new ImpressiveTwitter.Views.TweetView(model: model)
+    @position(tweetView)
     @$canvas.append(tweetView.render().el)
     @slideViews.push(tweetView)
 
-  coordinatesFor: (index) ->
+  position: (view) ->
     radius = 140 * @collection.size()
     theta = Math.PI * 2 / @collection.size()
-    {
-      translate:
-        x: Math.floor(radius * Math.cos(index * theta))
-        y: Math.floor(radius * Math.sin(index * theta))
-        z: 0
-    }
+    index = @collection.indexOf(view.model)
+    view.position
+      x: Math.floor(radius * Math.cos(index * theta))
+      y: Math.floor(radius * Math.sin(index * theta))
+      z: 0
 
   rearrangeViews: ->
-    for view, i in @slideViews
-      view.setCoordinates(@coordinatesFor(i))
+    for view in @slideViews
+      @position(view)
 
   step: ->
     @goToSlide(@randomTweetIndex())
