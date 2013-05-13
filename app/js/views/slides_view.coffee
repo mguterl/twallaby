@@ -9,7 +9,7 @@ ImpressiveTwitter.Views.SlidesView = Backbone.View.extend
   transitionDuration: 1000
 
   events:
-    'click .step': 'togglePaused'
+    'click .step': 'step'
 
   _paused: false
   _stepCount: 0
@@ -22,6 +22,7 @@ ImpressiveTwitter.Views.SlidesView = Backbone.View.extend
 
   initialize: ->
     @createCanvas()
+    @slideViews = []
     @cssHelper = new ImpressiveTwitter.Helpers.CssHelper
     @collection.on 'sync', @appendTweets, @
 
@@ -43,6 +44,7 @@ ImpressiveTwitter.Views.SlidesView = Backbone.View.extend
     for model, i in @collection.models
       tweetView = new ImpressiveTwitter.Views.TweetView(model: model, coordinates: @coordinatesFor(i))
       @$canvas.append(tweetView.render().el)
+      @slideViews.push(tweetView)
 
   coordinatesFor: (index) ->
     radius = 140 * @collection.size()
@@ -55,16 +57,16 @@ ImpressiveTwitter.Views.SlidesView = Backbone.View.extend
     }
 
   step: ->
-    if @_stepCount % 10 == 0
-      @goToSlide('overview')
-    else if @_stepCount % @announcementInterval == 0
-      @goToSlide(@randomAnnouncementIndex())
-    else
-      @goToSlide(@randomTweetIndex())
+    @goToSlide(@randomTweetIndex())
     @_stepCount = @_stepCount + 1
 
   goToSlide: (index) ->
-    return if @_paused
+    @$el.applyStyles
+      transitionDuration: "1000ms"
+
+    @$canvas.applyStyles
+      transform: @cssHelper.translate(@slideViews[index].coordinates.translate)
+      transitionDuration: "1000ms"
 
   randomSlideIndex: ->
     @randomIntegerBetween(@$('.step').first().index(), @$('.step').last().index())
