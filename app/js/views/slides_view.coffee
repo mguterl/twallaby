@@ -16,7 +16,7 @@ ImpressiveTwitter.Views.SlidesView = Backbone.View.extend
   defaultStyles:
     position: "absolute"
     transformOrigin: "top left"
-    transition: "all 0s ease-in-out"
+    transition: "all 1s ease-in-out"
     transformStyle: "preserve-3d"
 
   initialize: ->
@@ -63,12 +63,8 @@ ImpressiveTwitter.Views.SlidesView = Backbone.View.extend
     @goToSlide(@randomTweetIndex())
 
   goToSlide: (index) ->
-    @$el.applyStyles
-      transitionDuration: "1000ms"
-
     @$canvas.applyStyles
       transform: ImpressiveTwitter.cssHelper.translate(@slideViews[index].currentPosition)
-      transitionDuration: "1000ms"
 
   randomSlideIndex: ->
     @randomIntegerBetween(@$('.step').first().index(), @$('.step').last().index())
