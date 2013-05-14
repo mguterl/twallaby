@@ -6,7 +6,7 @@ ImpressiveTwitter.cssHelper =
     "rotateX(#{coords.x || 0}deg) rotateY(#{coords.y || 0}deg) rotateZ(#{coords.z || 0}deg)"
 
   scale: (s) ->
-    "scale(#{s})"
+    "scale(#{s || 1})"
 
   perspective: (p) ->
     "perspective(#{p}px)"
