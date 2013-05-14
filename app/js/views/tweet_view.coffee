@@ -29,14 +29,17 @@ ImpressiveTwitter.Views.TweetView = Backbone.View.extend
   position: (postions) ->
     @currentPosition = postions
     @stylize()
+    @
 
   scale: (scale) ->
     @currentScale = scale
     @stylize()
+    @
 
   rotate: (rotations) ->
     @currentRotation = rotations
     @stylize()
+    @
 
   stylize: ->
     tranforms = [
