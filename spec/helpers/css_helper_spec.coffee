@@ -12,7 +12,7 @@ describe "CssHelper", ->
 
   describe "rotate", ->
     it "returns a rotate string", ->
-      expect(@cssHelper.rotate(1, 2, 3)).to.equal "rotateX(1deg) rotateY(2deg) rotateZ(3deg)"
+      expect(@cssHelper.rotate(x: 1, y: 2, z: 3)).to.equal "rotateX(1deg) rotateY(2deg) rotateZ(3deg)"
 
   describe "scale", ->
     it "returns a scale string", ->
