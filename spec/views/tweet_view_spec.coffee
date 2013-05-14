@@ -15,5 +15,5 @@ describe "TweetView", ->
     beforeEach ->
       @tweetView.position(x: 1, y: 2, z: 3)
     it "applies a transform", ->
-      expect(@tweetView.el.style['-webkit-transform']).to.equal "translate(-50%, -50%) translate3d(1px, 2px, 3px)"
+      expect(@tweetView.el.style.cssText).to.match /translate3d\(1px, 2px, 3px\)/
       expect(@tweetView.currentPosition).to.deep.equal(x: 1, y: 2, z: 3)
