@@ -4,10 +4,6 @@ describe "SlidesView", ->
     @slidesView = new ImpressiveTwitter.Views.SlidesView(el: "<div><div id='canvas'></div></div>", collection: @tweets)
     @tweets.reset(FIXTURES.tweets)
 
-  describe "renderTweets", ->
-    it "renders sweet tweets", ->
-      expect(@slidesView.$('.tweet').length).to.equal @tweets.size()
-
   describe "randomIntegerBetween", ->
     it "gemerates a random number", ->
       random = @slidesView.randomIntegerBetween(2, 5)
