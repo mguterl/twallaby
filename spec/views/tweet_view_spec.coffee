@@ -17,3 +17,10 @@ describe "TweetView", ->
     it "applies a transform", ->
       expect(@tweetView.el.style.cssText).to.match /translate3d\(1px, 2px, 3px\)/
       expect(@tweetView.currentPosition).to.deep.equal(x: 1, y: 2, z: 3)
+
+  describe "scale", ->
+    beforeEach ->
+      @tweetView.scale(2)
+    it "applies a transform", ->
+      expect(@tweetView.el.style.cssText).to.match /scale\(2\)/
+      expect(@tweetView.currentScale).to.equal(2)

@@ -30,6 +30,10 @@ ImpressiveTwitter.Views.TweetView = Backbone.View.extend
     @currentPosition = postions
     @stylize()
 
+  scale: (scale) ->
+    @currentScale = scale
+    @stylize()
+
   stylize: ->
     tranforms = [
       "translate(-50%, -50%)"
