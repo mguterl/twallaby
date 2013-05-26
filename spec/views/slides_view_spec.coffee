@@ -1,7 +1,7 @@
 describe "SlidesView", ->
   beforeEach ->
-    @tweets = new ImpressiveTwitter.Collections.Tweets(FIXTURES.tweets)
-    @slidesView = new ImpressiveTwitter.Views.SlidesView(el: "<div><div id='canvas'></div></div>", collection: @tweets)
+    @tweets = new Twallaby.Collections.Tweets(FIXTURES.tweets)
+    @slidesView = new Twallaby.Views.SlidesView(el: "<div><div id='canvas'></div></div>", collection: @tweets)
 
   describe "collection:reset", ->
     beforeEach ->

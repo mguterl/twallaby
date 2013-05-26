@@ -1,7 +1,7 @@
 describe "TweetView", ->
   beforeEach ->
-    @tweet = new ImpressiveTwitter.Models.Tweet(FIXTURES.tweets[0])
-    @tweetView = new ImpressiveTwitter.Views.TweetView(model: @tweet)
+    @tweet = new Twallaby.Models.Tweet(FIXTURES.tweets[0])
+    @tweetView = new Twallaby.Views.TweetView(model: @tweet)
 
   describe "render", ->
     beforeEach ->

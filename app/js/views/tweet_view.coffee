@@ -1,4 +1,4 @@
-ImpressiveTwitter.Views.TweetView = Backbone.View.extend
+Twallaby.Views.TweetView = Backbone.View.extend
   className: "step tweet"
 
   template: JST['app/templates/tweet.us']
@@ -44,8 +44,8 @@ ImpressiveTwitter.Views.TweetView = Backbone.View.extend
   stylize: ->
     tranforms = [
       "translate(-50%, -50%)"
-      ImpressiveTwitter.cssHelper.translate(@currentPosition)
-      ImpressiveTwitter.cssHelper.rotate(@currentRotation)
-      ImpressiveTwitter.cssHelper.scale(@currentScale)
+      Twallaby.cssHelper.translate(@currentPosition)
+      Twallaby.cssHelper.rotate(@currentRotation)
+      Twallaby.cssHelper.scale(@currentScale)
     ].join(" ")
     @$el.applyStyles(transform: tranforms)

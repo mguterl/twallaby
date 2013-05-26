@@ -15,7 +15,7 @@
     <script type="text/javascript" src="<%= js %>"></script>
     <script type="text/javascript">
       $(function(){
-        ImpressiveTwitter.init()
+        Twallaby.init()
       })
     </script>
   </body>

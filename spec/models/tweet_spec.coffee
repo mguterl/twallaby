@@ -1,7 +1,7 @@
 describe "TweetModel", ->
   describe "bigger_profile_image_url", ->
     before ->
-      @tweet = new ImpressiveTwitter.Models.Tweet
+      @tweet = new Twallaby.Models.Tweet
         profile_image_url: "http://www.whatever.com/normal.png"
 
     it "Sets it on init", ->

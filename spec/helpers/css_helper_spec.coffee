@@ -1,7 +1,7 @@
 describe "CssHelper", ->
   beforeEach ->
     @elm = document.createElement('div')
-    @cssHelper = ImpressiveTwitter.cssHelper
+    @cssHelper = Twallaby.cssHelper
 
   afterEach ->
     @elm.remove()

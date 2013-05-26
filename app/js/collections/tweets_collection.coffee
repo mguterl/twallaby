@@ -1,5 +1,5 @@
-ImpressiveTwitter.Collections.Tweets = Backbone.Collection.extend
-  model: ImpressiveTwitter.Models.Tweet
+Twallaby.Collections.Tweets = Backbone.Collection.extend
+  model: Twallaby.Models.Tweet
 
   twitterParams:
     page: 1

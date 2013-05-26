@@ -7,7 +7,7 @@ describe "Tweets Collection", ->
     @clock.restore()
 
   beforeEach ->
-    @tweetsCollection = new ImpressiveTwitter.Collections.Tweets
+    @tweetsCollection = new Twallaby.Collections.Tweets
     @tweetsCollection.fetch = sinon.spy()
 
   describe "url", ->

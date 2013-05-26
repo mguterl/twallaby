@@ -1,4 +1,4 @@
-ImpressiveTwitter.Views.SlidesView = Backbone.View.extend
+Twallaby.Views.SlidesView = Backbone.View.extend
   id: "impress"
   template: JST['app/templates/index_view.us']
 
@@ -33,7 +33,7 @@ ImpressiveTwitter.Views.SlidesView = Backbone.View.extend
     @$el.applyStyles
       top: "50%"
       left: "50%"
-      transform: "#{ImpressiveTwitter.cssHelper.perspective(1000)} #{ImpressiveTwitter.cssHelper.scale(1)}"
+      transform: "#{Twallaby.cssHelper.perspective(1000)} #{Twallaby.cssHelper.scale(1)}"
     @
 
   renderTweets: ->
@@ -41,7 +41,7 @@ ImpressiveTwitter.Views.SlidesView = Backbone.View.extend
       @appendTweet(model)
 
   appendTweet: (model) ->
-    tweetView = new ImpressiveTwitter.Views.TweetView(model: model)
+    tweetView = new Twallaby.Views.TweetView(model: model)
     @position(tweetView)
     @$canvas.append(tweetView.render().el)
     @slideViews.push(tweetView)
@@ -64,13 +64,13 @@ ImpressiveTwitter.Views.SlidesView = Backbone.View.extend
 
   goToSlide: (index) ->
     @$canvas.applyStyles
-      transform: ImpressiveTwitter.cssHelper.translate(@slideViews[index].currentPosition)
+      transform: Twallaby.cssHelper.translate(@slideViews[index].currentPosition)
 
   randomSlideIndex: ->
-    ImpressiveTwitter.randomHelper.integerBetween(@$('.step').first().index(), @$('.step').last().index())
+    Twallaby.randomHelper.integerBetween(@$('.step').first().index(), @$('.step').last().index())
 
   randomAnnouncementIndex: ->
-    ImpressiveTwitter.randomHelper.integerBetween(@$('.announcement').first().index(), @$('.announcement').last().index())
+    Twallaby.randomHelper.integerBetween(@$('.announcement').first().index(), @$('.announcement').last().index())
 
   randomTweetIndex: ->
-    ImpressiveTwitter.randomHelper.integerBetween(@$('.tweet').first().index(), @$('.tweet').last().index())
+    Twallaby.randomHelper.integerBetween(@$('.tweet').first().index(), @$('.tweet').last().index())
