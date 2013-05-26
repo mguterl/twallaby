@@ -17,7 +17,7 @@ describe "SlidesView", ->
     it "renders the new tweet", ->
       expect(@slidesView.$('.tweet').length).to.equal @tweets.size()
 
-    it "rearranges the arranges the tweets", ->
+    it "repositions the tweets", ->
       tweetElements = @slidesView.$('.tweet')
       expect(tweetElements.get(0).style.cssText).to.match /translate3d\(420px, 0px, 0px\)/
       expect(tweetElements.get(2).style.cssText).to.match /translate3d\(-211px, -364px, 0px\)/

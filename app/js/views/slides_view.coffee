@@ -23,7 +23,7 @@ Twallaby.Views.SlidesView = Backbone.View.extend
     @$canvas = @$('#canvas')
     @slideViews = []
     @listenTo @collection, 'add', (model) ->
-      @rearrangeViews()
+      @repositionViews()
       @appendTweet(model)
     @listenTo @collection, 'reset', @renderTweets
 
@@ -55,7 +55,7 @@ Twallaby.Views.SlidesView = Backbone.View.extend
       y: Math.floor(radius * Math.sin(index * theta))
       z: 0
 
-  rearrangeViews: ->
+  repositionViews: ->
     for view in @slideViews
       @position(view)
 
