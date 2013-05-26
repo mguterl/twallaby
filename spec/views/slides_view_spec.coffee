@@ -5,7 +5,7 @@ describe "SlidesView", ->
     @tweets.reset(FIXTURES.tweets)
 
   describe "randomIntegerBetween", ->
-    it "gemerates a random number", ->
+    it "generates a random number", ->
       random = @slidesView.randomIntegerBetween(2, 5)
       expect(random).to.be.above(1)
       expect(random).to.be.below(6)
