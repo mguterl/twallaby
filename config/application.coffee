@@ -9,10 +9,6 @@ module.exports = require('lineman').config.extend('application', {
 
   coffee:
     compile:
-      files:
-        "generated/js/app.coffee.js": "<%= files.coffee.app %>"
-        "generated/js/spec.coffee.js": "<%= files.coffee.spec %>"
-        "generated/js/spec-helpers.coffee.js": "<%= files.coffee.specHelpers %>"
       options:
         bare: true
 })
