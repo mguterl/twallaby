@@ -1,5 +1,5 @@
-Twallaby.Collections.Tweets = Backbone.Collection.extend
-  model: Twallaby.Models.Tweet
+Twallaby.TweetsCollection = Backbone.Collection.extend
+  model: Twallaby.Tweet
 
   twitterParams:
     page: 1

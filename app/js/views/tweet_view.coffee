@@ -1,4 +1,4 @@
-Twallaby.Views.TweetView = Backbone.View.extend
+Twallaby.TweetView = Backbone.View.extend
   className: "step tweet"
 
   template: JST['app/templates/tweet.us']

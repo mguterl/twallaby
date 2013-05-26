@@ -1,7 +1,7 @@
 describe "TweetView", ->
   beforeEach ->
-    @tweet = new Twallaby.Models.Tweet(FIXTURES.tweets[0])
-    @tweetView = new Twallaby.Views.TweetView(model: @tweet)
+    @tweet = new Twallaby.Tweet(FIXTURES.tweets[0])
+    @tweetView = new Twallaby.TweetView(model: @tweet)
 
   describe "render", ->
     beforeEach ->

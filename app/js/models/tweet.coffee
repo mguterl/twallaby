@@ -1,4 +1,4 @@
-Twallaby.Models.Tweet = Backbone.Model.extend
+Twallaby.Tweet = Backbone.Model.extend
   initialize: ->
     if @get('profile_image_url')?
       @set 'bigger_profile_image_url', @get('profile_image_url').replace('normal', 'bigger')

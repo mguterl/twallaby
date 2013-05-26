@@ -1,4 +1,4 @@
-Twallaby.Views.SlidesView = Backbone.View.extend
+Twallaby.SlidesView = Backbone.View.extend
   id: "impress"
   template: JST['app/templates/index_view.us']
 
@@ -41,7 +41,7 @@ Twallaby.Views.SlidesView = Backbone.View.extend
       @appendTweet(model)
 
   appendTweet: (model) ->
-    tweetView = new Twallaby.Views.TweetView(model: model)
+    tweetView = new Twallaby.TweetView(model: model)
     @position(tweetView)
     @$canvas.append(tweetView.render().el)
     @slideViews.push(tweetView)
