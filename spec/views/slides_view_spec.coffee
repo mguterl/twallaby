@@ -1,21 +1,17 @@
 describe "SlidesView", ->
   beforeEach ->
-    @tweets = new ImpressiveTwitter.Collections.Tweets
+    @tweets = new ImpressiveTwitter.Collections.Tweets(FIXTURES.tweets)
     @slidesView = new ImpressiveTwitter.Views.SlidesView(el: "<div><div id='canvas'></div></div>", collection: @tweets)
-    @tweets.reset(FIXTURES.tweets)
-
-  describe "randomIntegerBetween", ->
-    it "generates a random number", ->
-      random = @slidesView.randomIntegerBetween(2, 5)
-      expect(random).to.be.above(1)
-      expect(random).to.be.below(6)
 
   describe "collection:reset", ->
+    beforeEach ->
+      @tweets.reset(FIXTURES.tweets)
     it "renders sweet tweets", ->
       expect(@slidesView.$('.tweet').length).to.equal @tweets.size()
 
   describe "adding a tweet", ->
     beforeEach ->
+      @tweets.reset(FIXTURES.tweets)
       @tweets.add([{id: 1234, text: "hello world"}])
 
     it "renders the new tweet", ->

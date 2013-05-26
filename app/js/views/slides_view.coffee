@@ -67,14 +67,10 @@ ImpressiveTwitter.Views.SlidesView = Backbone.View.extend
       transform: ImpressiveTwitter.cssHelper.translate(@slideViews[index].currentPosition)
 
   randomSlideIndex: ->
-    @randomIntegerBetween(@$('.step').first().index(), @$('.step').last().index())
+    ImpressiveTwitter.randomHelper.integerBetween(@$('.step').first().index(), @$('.step').last().index())
 
   randomAnnouncementIndex: ->
-    @randomIntegerBetween(@$('.announcement').first().index(), @$('.announcement').last().index())
+    ImpressiveTwitter.randomHelper.integerBetween(@$('.announcement').first().index(), @$('.announcement').last().index())
 
   randomTweetIndex: ->
-    @randomIntegerBetween(@$('.tweet').first().index(), @$('.tweet').last().index())
-
-  randomIntegerBetween: (from = 0, to = 0)->
-    Math.floor(Math.random() * (to - from + 1) + from)
-
+    ImpressiveTwitter.randomHelper.integerBetween(@$('.tweet').first().index(), @$('.tweet').last().index())
