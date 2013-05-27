@@ -8,14 +8,16 @@
   <body>
     <div id="slides">
       <div id="canvas">
-        <div class="announcement">
-          <h1>What up</h1>
+        <div class="step announcement" data-y="-500">
+          <h1>What Up</h1>
         </div>
-        <div class="announcement">
-          <h1>What up</h1>
+
+        <div class="step announcement" data-y="0">
+          <h1>What Up</h1>
         </div>
-        <div class="announcement">
-          <h1>What up</h1>
+
+        <div class="step announcement" data-y="500">
+          <h1>What Up</h1>
         </div>
       </div>
     </div>
