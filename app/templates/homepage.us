@@ -16,6 +16,7 @@
     <script type="text/javascript">
       $(function(){
         twallaby = new Twallaby({
+          element: $('#slides'),
           tweets: [
             {
               "created_at": "Thu, 09 May 2013 18:48:29 +0000",
