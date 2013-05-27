@@ -10,7 +10,6 @@ describe "SlidesView", ->
 
   describe "adding a tweet", ->
     beforeEach ->
-      @tweets.reset(FIXTURES.tweets)
       @tweets.add([{id: 1234, text: "hello world"}])
 
     it "renders the new tweet", ->

@@ -25,7 +25,6 @@ Twallaby.SlidesView = Backbone.View.extend
     @listenTo @collection, 'add', (model) ->
       @repositionViews()
       @appendTweet(model)
-    @listenTo @collection, 'reset', @renderTweets
 
   render: ->
     @$canvas.applyStyles(@defaultStyles)
