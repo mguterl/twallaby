@@ -8,7 +8,7 @@ Twallaby.SlidesView = Backbone.View.extend
   transitionDuration: 1000
 
   events:
-    'click .step': 'step'
+    'click': 'step'
 
   _paused: false
   _stepCount: 0
@@ -33,12 +33,19 @@ Twallaby.SlidesView = Backbone.View.extend
       top: "50%"
       left: "50%"
       transform: "#{Twallaby.cssHelper.perspective(1000)} #{Twallaby.cssHelper.scale(1)}"
+    @renderAnnouncements()
     @renderTweets()
     @
 
   renderTweets: ->
     for model in @collection.models
       @appendTweet(model)
+
+  renderAnnouncements: ->
+    for element in @$canvas.children()
+      announcementView = new Twallaby.AnnouncementView(el: element)
+      announcementView.render()
+      @slideViews.push(announcementView)
 
   appendTweet: (model) ->
     tweetView = new Twallaby.TweetView(model: model)
