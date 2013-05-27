@@ -10,8 +10,8 @@ Twallaby.SlidesView = Backbone.View.extend
   events:
     'click': 'step'
 
-  _paused: false
-  _stepCount: 0
+  paused: false
+  stepCount: 0
 
   defaultStyles:
     position: "absolute"
@@ -67,11 +67,21 @@ Twallaby.SlidesView = Backbone.View.extend
       @position(view)
 
   step: ->
-    @goToSlide(@randomTweetIndex())
+    if @stepCount % @announcementInterval == 0
+      @goToAnnouncement()
+    else
+      @goToTweet()
 
-  goToSlide: (index) ->
+  goToIndex: (index) ->
     @$canvas.applyStyles
       transform: Twallaby.cssHelper.translate(@slideViews[index].currentPosition)
+    @stepCount += 1
+
+  goToTweet: (index)->
+    @goToIndex(index || @randomTweetIndex())
+
+  goToAnnouncement: (index)->
+    @goToIndex(index || @randomAnnouncementIndex())
 
   randomSlideIndex: ->
     Twallaby.randomHelper.integerBetween(@$('.step').first().index(), @$('.step').last().index())
