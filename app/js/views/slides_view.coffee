@@ -20,7 +20,7 @@ Twallaby.SlidesView = Backbone.View.extend
     transformStyle: "preserve-3d"
 
   initialize: ->
-    @$canvas = @$('#canvas')
+    @$canvas = @$el.children(':first')
     @slideViews = []
     @listenTo @collection, 'add', (model) ->
       @repositionViews()

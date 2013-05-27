@@ -1,13 +1,12 @@
 describe "SlidesView", ->
   beforeEach ->
     @tweets = new Twallaby.TweetsCollection(FIXTURES.tweets)
-    @slidesView = new Twallaby.SlidesView(el: "<div><div id='canvas'></div></div>", collection: @tweets)
+    @slidesView = new Twallaby.SlidesView(el: "<div><div class='the-canvas'></div></div>", collection: @tweets)
+    @slidesView.render()
 
-  describe "collection:reset", ->
-    beforeEach ->
-      @tweets.reset(FIXTURES.tweets)
-    it "renders sweet tweets", ->
-      expect(@slidesView.$('.tweet').length).to.equal @tweets.size()
+  describe "canvas", ->
+    it "is the first child of the element", ->
+      expect(@slidesView.$canvas.attr('class')).to.equal 'the-canvas'
 
   describe "adding a tweet", ->
     beforeEach ->
