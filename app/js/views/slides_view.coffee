@@ -34,6 +34,7 @@ Twallaby.SlidesView = Backbone.View.extend
       top: "50%"
       left: "50%"
       transform: "#{Twallaby.cssHelper.perspective(1000)} #{Twallaby.cssHelper.scale(1)}"
+    @renderTweets()
     @
 
   renderTweets: ->
