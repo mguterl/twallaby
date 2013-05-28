@@ -12,4 +12,7 @@ module.exports = require('lineman').config.extend('application', {
       options:
         bare: false
         join: true
+
+  homepage:
+    template: "app/index.us"
 })
