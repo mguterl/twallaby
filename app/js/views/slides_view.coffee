@@ -1,6 +1,6 @@
 Twallaby.SlidesView = Backbone.View.extend
   id: "impress"
-  template: JST['app/templates/index_view.us']
+  template: JST['app/templates/overview.us']
 
   delay: 4000
   announcementInterval: 5
