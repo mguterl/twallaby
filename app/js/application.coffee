@@ -1,7 +1,7 @@
 class window.Twallaby
   constructor: (options={}) ->
     @tweetsCollection = new Twallaby.TweetsCollection(options.tweets)
-    @slidesView = new Twallaby.SlidesView
+    @stepsView = new Twallaby.StepsView
       el: options.element
       collection: @tweetsCollection
-    @slidesView.render()
+    @stepsView.render()

@@ -1,4 +1,4 @@
-Twallaby.SlidesView = Backbone.View.extend
+Twallaby.StepsView = Backbone.View.extend
   id: "impress"
   template: JST['app/templates/overview.us']
 
@@ -8,7 +8,7 @@ Twallaby.SlidesView = Backbone.View.extend
   transitionDuration: 1000
 
   events:
-    'click': 'step'
+    'click': 'go'
 
   paused: false
   stepCount: 0
@@ -21,7 +21,7 @@ Twallaby.SlidesView = Backbone.View.extend
 
   initialize: ->
     @$canvas = @$el.children(':first')
-    @slideViews = []
+    @childViews = []
     @listenTo @collection, 'add', (model) ->
       @repositionViews()
       @appendTweet(model)
@@ -45,13 +45,13 @@ Twallaby.SlidesView = Backbone.View.extend
     for element in @$canvas.children()
       announcementView = new Twallaby.AnnouncementView(el: element)
       announcementView.render()
-      @slideViews.push(announcementView)
+      @childViews.push(announcementView)
 
   appendTweet: (model) ->
     tweetView = new Twallaby.TweetView(model: model)
     @position(tweetView)
     @$canvas.append(tweetView.render().el)
-    @slideViews.push(tweetView)
+    @childViews.push(tweetView)
 
   position: (view) ->
     radius = 140 * @collection.size()
@@ -63,27 +63,29 @@ Twallaby.SlidesView = Backbone.View.extend
       z: 0
 
   repositionViews: ->
-    for view in @slideViews
+    for view in @childViews
       @position(view)
 
-  step: ->
+  go: ->
     if @stepCount % @announcementInterval == 0
       @goToAnnouncement()
     else
       @goToTweet()
 
-  goToIndex: (index) ->
+  goToStep: (index) ->
+    targetView = @childViews[index]
+    return unless targetView?
     @$canvas.applyStyles
-      transform: Twallaby.cssHelper.translate(@slideViews[index].currentPosition)
+      transform: Twallaby.cssHelper.translate(targetView.currentPosition)
     @stepCount += 1
 
   goToTweet: (index)->
-    @goToIndex(index || @randomTweetIndex())
+    @goToStep(index || @randomTweetIndex())
 
   goToAnnouncement: (index)->
-    @goToIndex(index || @randomAnnouncementIndex())
+    @goToStep(index || @randomAnnouncementIndex())
 
-  randomSlideIndex: ->
+  randomStepIndex: ->
     Twallaby.randomHelper.integerBetween(@$('.step').first().index(), @$('.step').last().index())
 
   randomAnnouncementIndex: ->

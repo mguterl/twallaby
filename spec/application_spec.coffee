@@ -14,4 +14,4 @@ describe "Application", ->
         @app = new Twallaby
           element: @element
       it "sets the slideViews el", ->
-        expect(@app.slidesView.$el).to.equal @element
+        expect(@app.stepsView.$el).to.equal @element
