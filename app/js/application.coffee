@@ -1,4 +1,4 @@
-class Twallaby
+class window.Twallaby
   constructor: (options={}) ->
     @tweetsCollection = new Twallaby.TweetsCollection(options.tweets)
     @slidesView = new Twallaby.SlidesView

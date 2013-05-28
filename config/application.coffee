@@ -10,5 +10,6 @@ module.exports = require('lineman').config.extend('application', {
   coffee:
     compile:
       options:
-        bare: true
+        bare: false
+        join: true
 })
