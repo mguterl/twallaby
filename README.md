@@ -7,8 +7,19 @@
 ### Run
 * `lineman run`
 
-### Test:
+### Test
 * `lineman spec`
 
-### Build:
+### Build
 * `lineman build`
+
+### API
+    var tweetWall = new Twallaby({
+      element: $('#slides')
+      pollInterval: 10000
+      twitterParams:
+        q: 'CWTDrinkup'
+        rpp: 25
+    })
+
+    tweetWall.startPolling()
