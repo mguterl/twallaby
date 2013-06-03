@@ -3,9 +3,12 @@ class window.Twallaby
     @tweetsCollection = new Twallaby.TweetsCollection options.tweets,
       twitterParams: options.twitterParams
       urlRoot: options.urlRoot
+      pollInterval: options.pollInterval
+
     @stepsView = new Twallaby.StepsView
       el: options.element
       collection: @tweetsCollection
+
     @stepsView.render()
 
   startPolling: ->

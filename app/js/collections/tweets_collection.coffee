@@ -8,13 +8,16 @@ Twallaby.TweetsCollection = Backbone.Collection.extend
 
   urlRoot: 'http://search.twitter.com/search.json'
 
+  pollInterval: 60000
+
   initialize: (models, options={}) ->
     @twitterParams = _.extend({}, @twitterParams, options.twitterParams)
     @urlRoot = options.urlRoot if options.urlRoot
+    @pollInterval = options.pollInterval if options.pollInterval
 
   startPolling: (interval) ->
     @fetch()
-    @interval = setInterval (=> @fetch()), interval || 60000
+    @interval = setInterval (=> @fetch()), interval || @pollInterval
 
   stopPolling: ->
     clearInterval @interval
