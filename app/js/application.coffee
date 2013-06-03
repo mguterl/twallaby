@@ -5,3 +5,4 @@ class window.Twallaby
       el: options.element
       collection: @tweetsCollection
     @stepsView.render()
+    @tweetsCollection.startPolling()

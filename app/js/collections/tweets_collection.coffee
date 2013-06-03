@@ -17,8 +17,7 @@ Twallaby.TweetsCollection = Backbone.Collection.extend
     urlParts = []
     for key, value of @twitterParams
       urlParts.push("#{key}=#{value}")
-    urlParts.push("callback=?")
-    encodeURI("http://search.twitter.com/search.json?#{urlParts.join("&")}")
+    encodeURI("/tweets?#{urlParts.join("&")}")
 
   parse: (resp, xhr) ->
     resp.results
