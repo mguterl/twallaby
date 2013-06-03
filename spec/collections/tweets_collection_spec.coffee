@@ -8,15 +8,26 @@ describe "Tweets Collection", ->
 
   beforeEach ->
     @tweetsCollection = new Twallaby.TweetsCollection
+    @tweetsCollection.twitterParams = {}
     @tweetsCollection.fetch = sinon.spy()
 
   describe "url", ->
-    it "parses options", ->
-      @tweetsCollection.twitterParams = {
-        foo: "bar"
-        baz: "bing"
-      }
-      expect(@tweetsCollection.url()).to.equal "http://search.twitter.com/search.json?foo=bar&baz=bing&callback=?"
+    describe "default", ->
+      it "uses the default twitter search", ->
+        expect(@tweetsCollection.url()).to.equal "http://search.twitter.com/search.json?callback=?"
+
+    describe "with twitterParams", ->
+      beforeEach ->
+        @tweetsCollection.twitterParams =
+          foo: "bar"
+          baz: "bing"
+      it "parses options", ->
+        expect(@tweetsCollection.url()).to.equal "http://search.twitter.com/search.json?foo=bar&baz=bing&callback=?"
+
+    describe "with a urlRoot", ->
+      it "apply's the url root", ->
+        @tweetsCollection.urlRoot = "http://whatup.com"
+        expect(@tweetsCollection.url()).to.equal "http://whatup.com?callback=?"
 
   describe "polling", ->
     it "periodically fetches data from Twitter", ->

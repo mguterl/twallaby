@@ -1,5 +1,5 @@
 <div class="profile-image">
-  <img src="<%= get('bigger_profile_image_url') %>" />
+  <img src="<%= get('profile_image_url') %>" />
 </div>
 <div class="content">
   <p class="author">@<%= get('from_user') %></p>
