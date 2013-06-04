@@ -5,6 +5,6 @@ Twallaby.TweetView = Twallaby.StepView.extend
 
   render: ->
     @$el.html(@template(@model))
-    @$('.timestamp').timeago()
+    @$('.tweet__timestamp').timeago()
     @$el.applyStyles(@defaultStyles)
     @

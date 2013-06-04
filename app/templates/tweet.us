@@ -1,8 +1,8 @@
-<div class="profile-image">
-  <img src="<%= get('profile_image_url') %>" />
+<div class="tweet__avatar">
+  <img src="<%= get('bigger_profile_image_url') %>" />
 </div>
-<div class="content">
-  <p class="author">@<%= get('from_user') %></p>
-  <q class="text"><%= get('text') %></q>
-  <p class="timestamp" title="<%= get('created_at') %>"></p>
+<div class="tweet__content">
+  <p class="tweet__author">@<%= get('from_user') %></p>
+  <p class="tweet__text"><%= get('text') %></p>
+  <p class="tweet__timestamp" title="<%= get('created_at') %>"></p>
 </div>
