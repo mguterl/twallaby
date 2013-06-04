@@ -17,8 +17,8 @@ describe "StepsView", ->
       expect(@stepsView.$('.tweet').length).to.equal @tweets.size()
     it "repositions the tweets", ->
       tweetElements = @stepsView.$('.tweet')
-      expect(tweetElements.get(0).style.cssText).to.match /translate3d\(420px, 0px, 0px\)/
-      expect(tweetElements.get(2).style.cssText).to.match /translate3d\(-211px, -364px, 0px\)/
+      expect(tweetElements.get(0).style.cssText).to.match /translate3d\(300px, 0px, 0px\)/
+      expect(tweetElements.get(2).style.cssText).to.match /translate3d\(-151px, -260px, 0px\)/
 
   describe "goTo", ->
     beforeEach ->
