@@ -13,3 +13,6 @@ class window.Twallaby
 
   startPolling: ->
     @tweetsCollection.startPolling()
+
+  fetch: ->
+    @tweetsCollection.fetch()

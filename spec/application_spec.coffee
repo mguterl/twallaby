@@ -45,3 +45,12 @@ describe "Application", ->
 
       it "sets the collections pollInterval", ->
         expect(@app.tweetsCollection.pollInterval).to.equal 123
+
+    describe "#fetch", ->
+      beforeEach ->
+        @app = new Twallaby()
+        @app.tweetsCollection.fetch = sinon.spy()
+        @app.fetch()
+
+      it "fetches the collections", ->
+        expect(@app.tweetsCollection.fetch).to.have.been.called
