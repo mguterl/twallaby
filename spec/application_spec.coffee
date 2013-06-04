@@ -37,3 +37,11 @@ describe "Application", ->
 
       it "sets the collections url with the urlRoot", ->
         expect(@app.tweetsCollection.urlRoot).to.equal 'http://whatup.com'
+
+    describe "pollInterval", ->
+      beforeEach ->
+        @app = new Twallaby
+          pollInterval: 123
+
+      it "sets the collections pollInterval", ->
+        expect(@app.tweetsCollection.pollInterval).to.equal 123
