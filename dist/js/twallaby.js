@@ -51,6 +51,10 @@ return __p
       return this.tweetsCollection.startPolling();
     };
 
+    Twallaby.prototype.fetch = function() {
+      return this.tweetsCollection.fetch();
+    };
+
     return Twallaby;
 
   })();
@@ -238,13 +242,10 @@ return __p
       this.$canvas = this.$el.children(':first');
       this.tweetViews = [];
       this.announcementViews = [];
-      this.listenTo(this.collection, 'add', function(model) {
+      return this.listenTo(this.collection, 'add', function(model) {
         this.repositionTweetViews();
         this.appendTweet(model);
         return this.applyPerspective();
-      });
-      return this.listenTo(this.collection, 'remove', function(model) {
-        return console.log("remove", model);
       });
     },
     render: function() {
@@ -338,7 +339,6 @@ return __p
         y: -view.currentPosition.y,
         z: -view.currentPosition.z
       };
-      console.log(targetPosition);
       this.$canvas.applyStyles({
         transform: Twallaby.cssHelper.translate(targetPosition)
       });
@@ -351,10 +351,10 @@ return __p
       return this.goTo(this.announcementViews[index] || this.announcementViews[this.randomAnnouncementIndex()]);
     },
     randomAnnouncementIndex: function() {
-      return Twallaby.randomHelper.integerBetween(0, this.announcementViews.length);
+      return Twallaby.randomHelper.integerBetween(0, this.announcementViews.length - 1);
     },
     randomTweetIndex: function() {
-      return Twallaby.randomHelper.integerBetween(0, this.tweetViews.length);
+      return Twallaby.randomHelper.integerBetween(0, this.tweetViews.length - 1);
     }
   });
 

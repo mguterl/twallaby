@@ -8,7 +8,7 @@
 module.exports = require('lineman').config.extend('application', {
 
   prependTasks:
-    dist: ["uglify:noVendor", "concat:noVendor", "something"]
+    dist: ["concat:all", "concat:distAll", "concat:noVendor", "uglify:noVendor"]
 
   coffee:
     compile:
@@ -22,20 +22,40 @@ module.exports = require('lineman').config.extend('application', {
   concat:
     noVendor:
       src: ["<banner:meta.banner>", "<%= files.template.generated %>", "<%= files.coffee.generated %>", "<%= files.js.app %>"]
-      dest: "dist/js/twallaby.js"
+      dest: "<%= files.js.concatenatedNoVendor %>"
+    all:
+      src: ["<banner:meta.banner>", "<%= files.js.vendor %>", "<%= files.template.generated %>", "<%= files.coffee.generated %>", "<%= files.js.app %>"]
+      dest: "<%= files.js.concatenatedAll %>"
+    distAll:
+      src: ["<banner:meta.banner>", "<%= files.js.vendor %>", "<%= files.template.generated %>", "<%= files.coffee.generated %>", "<%= files.js.app %>"]
+      dest: "<%= files.js.distAll %>"
 
   uglify:
     js:
       files:
-        "dist/js/twallaby-all.min.js": "<%= files.glob.js.concatenated %>"
+        "dist/js/twallaby-all.min.js": "<%= files.js.concatenated %>"
 
     noVendor:
       files:
-        "dist/js/twallaby.min.js": "<%= files.js.noVendor %>"
+        "dist/js/twallaby.min.js": "<%= files.js.concatenatedNoVendor %>"
 
   cssmin:
     compress:
       files:
-        "dist/css/twallaby.min.css": "<%= files.glob.css.concatenated %>"
+        "dist/css/twallaby.min.css": "<%= files.css.concatenated %>"
+
+  homepage:
+    template: "<%= files.template.homepage %>"
+    dev:
+      dest: "generated/index.html"
+      context:
+        js: "js/twallaby-all.js"
+        css: "css/app.css"
+
+    dist:
+      dest: "dist/index.html"
+      context:
+        js: "js/twallaby-all.min.js"
+        css: "css/app.min.css"
 
 })

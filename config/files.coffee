@@ -20,9 +20,12 @@ module.exports = require('lineman').config.extend('files', {
       "vendor/js/backbone.js"
       "vendor/js/**/*.js"
     ]
-    concatenated: "generated/js/twallaby-all.js"
+    specHelpers: "spec/spec_helper.js"
+    concatenatedAll: "generated/js/twallaby-all.js"
+    distAll: "dist/js/twallaby-all.js"
     minified: "dist/js/twallaby-all.min.js"
-    noVendor: "dist/js/twallaby.js"
+    concatenatedNoVendor: "dist/js/twallaby.js"
+    minifiedNoVendor: "dist/js/twallaby.js"
 
   coffee:
     app: [
@@ -32,6 +35,7 @@ module.exports = require('lineman').config.extend('files', {
       "app/js/helpers/**/*.coffee"
       "app/js/views/**/*.coffee"
     ]
+    specHelpers: "spec/spec_helper.coffee"
     generated: "generated/js/twallaby.js"
 
   template:
