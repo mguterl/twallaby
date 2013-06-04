@@ -42,7 +42,7 @@ Twallaby.StepsView = Backbone.View.extend
 
   applyPerspective: ->
     @$el.applyStyles
-      transform: "#{Twallaby.cssHelper.perspective(1000)} #{Twallaby.cssHelper.scale(0.7)}"
+      transform: "#{Twallaby.cssHelper.scale(1)}"
 
   renderTweets: ->
     for model in @collection.models
@@ -84,7 +84,6 @@ Twallaby.StepsView = Backbone.View.extend
       x: -view.currentPosition.x
       y: -view.currentPosition.y
       z: -view.currentPosition.z
-    console.log(targetPosition)
     @$canvas.applyStyles
       transform: Twallaby.cssHelper.translate(targetPosition)
     @stepCount += 1

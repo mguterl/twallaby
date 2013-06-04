@@ -98,3 +98,10 @@ describe "StepsView", ->
           @stepsView.goToAnnouncement(100)
         it "goes to a random index", ->
           expect(@stepsView.randomAnnouncementIndex).to.have.been.called
+
+  describe "applyPerspective", ->
+    beforeEach ->
+      @stepsView.applyPerspective()
+    it "applies a perspective to the el", ->
+      expect(@stepsView.el.style.cssText).to.match /scale/
+
