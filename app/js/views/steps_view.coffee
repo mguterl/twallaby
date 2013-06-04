@@ -80,8 +80,13 @@ Twallaby.StepsView = Backbone.View.extend
       @goToTweet()
 
   goTo: (view) ->
+    targetPosition =
+      x: -view.currentPosition.x
+      y: -view.currentPosition.y
+      z: -view.currentPosition.z
+    console.log(targetPosition)
     @$canvas.applyStyles
-      transform: Twallaby.cssHelper.translate(view.currentPosition)
+      transform: Twallaby.cssHelper.translate(targetPosition)
     @stepCount += 1
 
   goToTweet: (index)->
