@@ -23,9 +23,11 @@ Twallaby.StepsView = Backbone.View.extend
     @$canvas = @$el.children(':first')
     @tweetViews = []
     @announcementViews = []
+
     @listenTo @collection, 'add', (model) ->
       @repositionTweetViews()
       @appendTweet(model)
+      @applyPerspective()
 
   render: ->
     @$canvas.applyStyles(@defaultStyles)
@@ -33,10 +35,14 @@ Twallaby.StepsView = Backbone.View.extend
     @$el.applyStyles
       top: "50%"
       left: "50%"
-      transform: "#{Twallaby.cssHelper.perspective(1000)} #{Twallaby.cssHelper.scale(1)}"
+    @applyPerspective()
     @renderAnnouncements()
     @renderTweets()
     @
+
+  applyPerspective: ->
+    @$el.applyStyles
+      transform: "#{Twallaby.cssHelper.perspective(1000)} #{Twallaby.cssHelper.scale(0.7)}"
 
   renderTweets: ->
     for model in @collection.models
@@ -55,7 +61,7 @@ Twallaby.StepsView = Backbone.View.extend
     @tweetViews.push(tweetView)
 
   position: (view) ->
-    radius = 140 * @collection.size()
+    radius = 100 * @collection.size()
     theta = Math.PI * 2 / @collection.size()
     index = @collection.indexOf(view.model)
     view.position
