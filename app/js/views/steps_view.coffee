@@ -96,7 +96,7 @@ Twallaby.StepsView = Backbone.View.extend
     @goTo(@announcementViews[index] || @announcementViews[@randomAnnouncementIndex()])
 
   randomAnnouncementIndex: ->
-    Twallaby.randomHelper.integerBetween(0, @announcementViews.length)
+    Twallaby.randomHelper.integerBetween(0, @announcementViews.length - 1)
 
   randomTweetIndex: ->
-    Twallaby.randomHelper.integerBetween(0, @tweetViews.length)
+    Twallaby.randomHelper.integerBetween(0, @tweetViews.length - 1)
