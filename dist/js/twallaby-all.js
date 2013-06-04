@@ -11899,13 +11899,13 @@ this["JST"]["app/templates/tweet.us"] = function(obj) {
 obj || (obj = {});
 var __t, __p = '', __e = _.escape;
 with (obj) {
-__p += '<div class="profile-image">\n  <img src="' +
-((__t = ( get('profile_image_url') )) == null ? '' : __t) +
-'" />\n</div>\n<div class="content">\n  <p class="author">@' +
+__p += '<div class="tweet__avatar">\n  <img src="' +
+((__t = ( get('bigger_profile_image_url') )) == null ? '' : __t) +
+'" />\n</div>\n<div class="tweet__content">\n  <p class="tweet__author">@' +
 ((__t = ( get('from_user') )) == null ? '' : __t) +
-'</p>\n  <q class="text">' +
+'</p>\n  <p class="tweet__text">' +
 ((__t = ( get('text') )) == null ? '' : __t) +
-'</q>\n  <p class="timestamp" title="' +
+'</p>\n  <p class="tweet__timestamp" title="' +
 ((__t = ( get('created_at') )) == null ? '' : __t) +
 '"></p>\n</div>\n';
 
@@ -12145,7 +12145,7 @@ return __p
     },
     applyPerspective: function() {
       return this.$el.applyStyles({
-        transform: "" + (Twallaby.cssHelper.perspective(1000)) + " " + (Twallaby.cssHelper.scale(0.7))
+        transform: "" + (Twallaby.cssHelper.scale(1))
       });
     },
     renderTweets: function() {
@@ -12246,7 +12246,7 @@ return __p
     template: JST['app/templates/tweet.us'],
     render: function() {
       this.$el.html(this.template(this.model));
-      this.$('.timestamp').timeago();
+      this.$('.tweet__timestamp').timeago();
       this.$el.applyStyles(this.defaultStyles);
       return this;
     }
