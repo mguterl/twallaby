@@ -21,9 +21,10 @@ Twallaby.StepsView = Backbone.View.extend
 
   initialize: ->
     @$canvas = @$el.children(':first')
-    @childViews = []
+    @tweetViews = []
+    @announcementViews = []
     @listenTo @collection, 'add', (model) ->
-      @repositionViews()
+      @repositionTweetViews()
       @appendTweet(model)
 
   render: ->
@@ -45,13 +46,13 @@ Twallaby.StepsView = Backbone.View.extend
     for element in @$canvas.children()
       announcementView = new Twallaby.AnnouncementView(el: element)
       announcementView.render()
-      @childViews.push(announcementView)
+      @announcementViews.push(announcementView)
 
   appendTweet: (model) ->
     tweetView = new Twallaby.TweetView(model: model)
     @position(tweetView)
     @$canvas.append(tweetView.render().el)
-    @childViews.push(tweetView)
+    @tweetViews.push(tweetView)
 
   position: (view) ->
     radius = 140 * @collection.size()
@@ -62,8 +63,8 @@ Twallaby.StepsView = Backbone.View.extend
       y: Math.floor(radius * Math.sin(index * theta))
       z: 0
 
-  repositionViews: ->
-    for view in @childViews
+  repositionTweetViews: ->
+    for view in @tweetViews
       @position(view)
 
   go: ->
@@ -72,24 +73,19 @@ Twallaby.StepsView = Backbone.View.extend
     else
       @goToTweet()
 
-  goToStep: (index) ->
-    targetView = @childViews[index]
-    return unless targetView?
+  goTo: (view) ->
     @$canvas.applyStyles
-      transform: Twallaby.cssHelper.translate(targetView.currentPosition)
+      transform: Twallaby.cssHelper.translate(view.currentPosition)
     @stepCount += 1
 
   goToTweet: (index)->
-    @goToStep(index || @randomTweetIndex())
+    @goTo(@tweetViews[index] || @tweetViews[@randomTweetIndex()])
 
   goToAnnouncement: (index)->
-    @goToStep(index || @randomAnnouncementIndex())
-
-  randomStepIndex: ->
-    Twallaby.randomHelper.integerBetween(@$('.step').first().index(), @$('.step').last().index())
+    @goTo(@announcementViews[index] || @announcementViews[@randomAnnouncementIndex()])
 
   randomAnnouncementIndex: ->
-    Twallaby.randomHelper.integerBetween(@$('.announcement').first().index(), @$('.announcement').last().index())
+    Twallaby.randomHelper.integerBetween(0, @announcementViews.length)
 
   randomTweetIndex: ->
-    Twallaby.randomHelper.integerBetween(@$('.tweet').first().index(), @$('.tweet').last().index())
+    Twallaby.randomHelper.integerBetween(0, @tweetViews.length)
