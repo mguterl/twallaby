@@ -1,13 +1,18 @@
 # Twallaby
 
-## Install
+## Getting Started
 
-* `npm install`
-* `npm install lineman -g`
+`git clone git://github.com/gaslight/twallaby.git`
 
-## Run
+`cd twallaby`
 
-* `lineman run`
+`npm install`
+
+`npm install lineman -g`
+
+`lineman run`
+
+`open http://locahost:8000`
 
 ## Test
 
