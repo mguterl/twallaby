@@ -19,12 +19,14 @@
 
 ## API
 
-    var tweetWall = new Twallaby({
-      element: $('#slides')
-      pollInterval: 10000
-      twitterParams:
-        q: 'CWTDrinkup'
-        rpp: 25
-    })
+```javascript
+var tweetWall = new Twallaby({
+  element: $('#slides')
+  pollInterval: 10000
+  twitterParams:
+    q: 'CWTDrinkup'
+    rpp: 25
+})
 
-    tweetWall.startPolling()
+tweetWall.startPolling()
+```
