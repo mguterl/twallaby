@@ -7,8 +7,8 @@ describe "TweetView", ->
     beforeEach ->
       @tweetView.render()
     it "renders a sweet tweet", ->
-      expect(@tweetView.$('.author').text()).to.equal "@#{@tweet.get('from_user')}"
+      expect(@tweetView.$('.tweet__author').text()).to.equal "@#{@tweet.get('from_user')}"
     it "has a pretty timestamp", ->
-      expect(@tweetView.$('.timestamp').text()).to.have.string('ago')
+      expect(@tweetView.$('.tweet__timestamp').text()).to.have.string('ago')
     it "applies the default styles", ->
       expect(@tweetView.el.style.cssText).to.match /position: absolute/
