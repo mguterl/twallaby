@@ -24,6 +24,11 @@ Twallaby.StepsView = Backbone.View.extend
     @tweetViews = []
     @announcementViews = []
 
+    @listenTo @collection, 'remove', (model, collection, options) ->
+      @tweetViews[options.index].remove()
+      @tweetViews.splice(options.index, 1)
+      @repositionTweetViews()
+
     @listenTo @collection, 'add', (model) ->
       @repositionTweetViews()
       @appendTweet(model)

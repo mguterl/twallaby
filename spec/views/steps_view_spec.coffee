@@ -105,3 +105,11 @@ describe "StepsView", ->
     it "applies a perspective to the el", ->
       expect(@stepsView.el.style.cssText).to.match /scale/
 
+  describe "removeing a tweet", ->
+    beforeEach ->
+      @stepsView.repositionTweetViews = sinon.spy()
+      @tweets.remove(@tweets.first())
+    it "repositions the tweets", ->
+      expect(@stepsView.repositionTweetViews).to.have.been.called
+    it "removes the view", ->
+      expect(@stepsView.$('.tweet').length).to.equal 1
