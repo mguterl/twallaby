@@ -61,7 +61,7 @@ Twallaby.StepsView = Backbone.View.extend
     @tweetViews.push(tweetView)
 
   position: (view) ->
-    radius = 100 * @collection.size()
+    radius = 400 * Math.sqrt(@collection.size())
     theta = Math.PI * 2 / @collection.size()
     index = @collection.indexOf(view.model)
     view.position
