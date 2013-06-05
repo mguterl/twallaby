@@ -7,11 +7,14 @@ Twallaby.StepsView = Backbone.View.extend
   perspective: 1000
   transitionDuration: 1000
 
-  events:
-    'click': 'go'
+  tweetViews: []
+  announcementViews: []
 
   paused: false
   stepCount: 0
+
+  events:
+    'click': 'go'
 
   defaultStyles:
     position: "absolute"
@@ -21,8 +24,6 @@ Twallaby.StepsView = Backbone.View.extend
 
   initialize: ->
     @$canvas = @$el.children(':first')
-    @tweetViews = []
-    @announcementViews = []
     @listenTo @collection, 'remove', @handleRemove
     @listenTo @collection, 'add', @handleAdd
 
