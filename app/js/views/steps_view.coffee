@@ -56,12 +56,14 @@ Twallaby.StepsView = Backbone.View.extend
   renderTweets: ->
     for model in @collection.models
       @appendTweet(model)
+    return
 
   renderAnnouncements: ->
     for element in @$canvas.children()
       announcementView = new Twallaby.AnnouncementView(el: element)
       announcementView.render()
       @announcementViews.push(announcementView)
+    return
 
   appendTweet: (model) ->
     tweetView = new Twallaby.TweetView(model: model)
@@ -81,6 +83,7 @@ Twallaby.StepsView = Backbone.View.extend
   repositionTweetViews: ->
     for view in @tweetViews
       @position(view)
+    return
 
   go: ->
     if @stepCount % @announcementInterval == 0
