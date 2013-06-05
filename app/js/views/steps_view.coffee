@@ -23,16 +23,8 @@ Twallaby.StepsView = Backbone.View.extend
     @$canvas = @$el.children(':first')
     @tweetViews = []
     @announcementViews = []
-
-    @listenTo @collection, 'remove', (model, collection, options) ->
-      @tweetViews[options.index].remove()
-      @tweetViews.splice(options.index, 1)
-      @repositionTweetViews()
-
-    @listenTo @collection, 'add', (model) ->
-      @repositionTweetViews()
-      @appendTweet(model)
-      @applyPerspective()
+    @listenTo @collection, 'remove', @handleRemove
+    @listenTo @collection, 'add', @handleAdd
 
   render: ->
     @$canvas.applyStyles(@defaultStyles)
@@ -44,6 +36,17 @@ Twallaby.StepsView = Backbone.View.extend
     @renderAnnouncements()
     @renderTweets()
     @
+
+  handleAdd: (model) ->
+    @repositionTweetViews()
+    @appendTweet(model)
+    @applyPerspective()
+
+  handleRemove: (model, collection, options) ->
+    @tweetViews[options.index].remove()
+    @tweetViews.splice(options.index, 1)
+    @repositionTweetViews()
+    @applyPerspective()
 
   applyPerspective: ->
     @$el.applyStyles
