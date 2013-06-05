@@ -1,23 +1,23 @@
 # Twallaby
 
-### Install
+## Install
 
 * `npm install`
 * `npm install lineman -g`
 
-### Run
+## Run
 
 * `lineman run`
 
-### Test
+## Test
 
 * `lineman spec`
 
-### Build
+## Build
 
 * `lineman build`
 
-### API
+## API
 
     var tweetWall = new Twallaby({
       element: $('#slides')
