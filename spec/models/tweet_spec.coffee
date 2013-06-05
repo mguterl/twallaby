@@ -6,5 +6,3 @@ describe "TweetModel", ->
 
     it "Sets it on init", ->
       expect(@tweet.get('bigger_profile_image_url')).to.equal "http://www.whatever.com/bigger.png"
-
-
